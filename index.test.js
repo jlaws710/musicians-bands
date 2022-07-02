@@ -14,27 +14,14 @@ describe('Band and Musician Models', () => {
 
     test('can create a Band', async () => {
         // TODO - test creating a band
-        /**
-         * Create a new instance of a band using the Band Model
-         *  Check to see if the name passed into the object is in fact the correct on the new instance
-         **/
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
-    })
+        const testband = await Band.create({ name: 'Beatles', genre: 'Rock'})
+        expect(testband.name).toBe('Beatles');
+    });
 
     test('can create a Musician', async () => {
-        // TODO - test creating a musician
-        /**
-         * Create a new instance of a musician using the Musician Model
-         *  Check to see if the name or intrument passed into the object is infact the correct on the new instance
-         **/
-        expect('NO TEST').toBe('EXPECTED VALUE HERE');
-    })
-
-    /*
-     * Optional test to show associations:
-        - I've completed this test for you
-        - I've left it here for you to see how to go about testing associations 
-    */
+        const testmusician = await Musician.create({ name: 'Singer', instrument: 'Drum'})
+        expect(testmusician.instrument).toBe('Drum');
+    });
 
     test('Band can have many Musicians', async () => {
         await sequelize.sync({ force: true }); // recreate db
